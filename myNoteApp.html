@@ -1,0 +1,30 @@
+<html ng-app="myNoteApp">
+<script src = "angular.min.js"></script>
+	<body>
+	<title>My Note Application</title>
+		<div ng-controller="myNoteCtrl">
+			<h3>My Note Application</h3>
+			<p><textarea rows="3" cols="40" ng-model="note" ng-focus="edit"></textarea></p>
+			<p>
+				<button ng-click="clear()">Clear</button>
+				<button ng-click="save()" ng-disabled="note.length==0" ng-hide="edit">Save</button>
+				<button ng-click="saveChanges()" ng-disabled="note.length==0" ng-show="edit">Save Changes</button>
+				<button ng-click="cancelEdit()" ng-show="edit">Cancel Edit</button>
+			</p>
+			<p>Number of characters left : <span ng-bind="left()"></span></p>
+			<p><span ng-show="prev.length>0">Saved notes : </span>
+				<table>
+				<tr ng-repeat="note in prev track by $index">
+				    <td>{{ ($index+1) + " " + note }}</td>
+				    <td><button ng-click="editNote($index)" ng-disabled="isEditID($index)">Edit</button></td>
+				    <td><button ng-click="deleteNote($index)" ng-disabled="isEditID($index)">Delete</button></td>
+				</tr>
+				</table>
+			</p>
+			<p>Total number of notes : <span ng-bind="prev.length"></span></p>
+			<p><button ng-show="prev.length>0" ng-click="deleteAll()">Delete all notes</button></p>
+		</div>
+		<script src="myNoteApp.js"></script>
+		<script src="myNoteCtrl.js"></script>
+	</body>
+</html>
