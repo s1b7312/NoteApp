@@ -1,12 +1,12 @@
 <html ng-app="myNoteApp">
-
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-
-	<body>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="theme.css">
+<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<body class="col-md-8 col-md-offset-1">
 	<title>My Note Application</title>
 		<div ng-controller="myNoteCtrl">
 			<h3>My Note Application</h3>
-			<p><textarea rows="3" cols="40" ng-model="note" ng-focus="edit"></textarea></p>
+			<p><textarea class="form-control" rows="5" cols="70" ng-model="note" ng-focus="edit" placeholder="Write a new note here..."></textarea></p>
 			<p>
 				<button ng-click="clear()">Clear</button>
 				<button ng-click="save()" ng-disabled="note.length==0" ng-hide="edit">Save</button>
@@ -17,9 +17,10 @@
 			<p><span ng-show="prev.length>0">Saved notes : </span>
 				<table>
 				<tr ng-repeat="note in prev track by $index">
-				    <td>{{ ($index+1) + " " + note }}</td>
-				    <td><button ng-click="editNote($index)" ng-disabled="isEditID($index)">Edit</button></td>
-				    <td><button ng-click="deleteNote($index)" ng-disabled="isEditID($index)">Delete</button></td>
+					<td>{{ ($index+1) }}</td>
+				    <td><pre>{{ note }}</pre></td>
+				    <td><button class="btn btn-success glyphicon glyphicon-pencil" title="edit" ng-click="editNote($index)" ng-disabled="isEditID($index)"></button></td>
+				    <td><button class="btn btn-danger glyphicon glyphicon-trash" title="delete" ng-click="deleteNote($index)" ng-disabled="isEditID($index)"></button></td>
 				</tr>
 				</table>
 			</p>

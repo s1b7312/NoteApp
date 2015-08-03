@@ -15,7 +15,7 @@ myNoteApp.controller("myNoteCtrl", function($scope) {
 		$scope.note="";
 	};
 	$scope.deleteNote = function(id) {
-		$scope.prev.splice(id,1);	// delete 1 note at $index = id
+		$scope.prev.splice(id,1); 
 		localStorage.setItem('myNotes', JSON.stringify($scope.prev));
 	}
 	$scope.editNote = function(id) {
@@ -24,8 +24,8 @@ myNoteApp.controller("myNoteCtrl", function($scope) {
 		$scope.editID = id;
 	}
 	$scope.saveChanges = function() {
-		$scope.prev.splice($scope.editID,1);	// delete old note
-		$scope.prev.splice($scope.editID, 0, $scope.note);	// save new note in its place
+		$scope.prev.splice($scope.editID,1); 
+		$scope.prev.splice($scope.editID, 0, $scope.note);
 		localStorage.setItem('myNotes', JSON.stringify($scope.prev));
 		$scope.note = "";
 		$scope.edit = false;
@@ -40,7 +40,7 @@ myNoteApp.controller("myNoteCtrl", function($scope) {
 		return id==$scope.editID;
 	}
 	$scope.deleteAll = function() {
-		$scope.confirm = confirm("Are your sure?");
+		$scope.confirm = confirm("Are you sure?");
 		if($scope.confirm)
 			$scope.prev.length = 0;
 		localStorage.setItem('myNotes', JSON.stringify($scope.prev));
