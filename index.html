@@ -6,7 +6,7 @@
 	<title>My Note Application</title>
 		<div ng-controller="myNoteCtrl">
 			<h3>My Note Application</h3>
-			<p><textarea class="form-control" rows="5" cols="70" ng-model="note" ng-focus="edit" placeholder="Write a new note here..."></textarea></p>
+			<p><textarea class="form-control" rows="5" cols="70" ng-model="note" ng-focus="edit" limit-to="{{maxLength}}" placeholder="Write a new note here..."></textarea></p>
 			<p>
 				<button ng-click="clear()">Clear</button>
 				<button ng-click="save()" ng-disabled="note.length==0" ng-hide="edit">Save</button>
@@ -29,5 +29,6 @@
 		</div>
 		<script src="myNoteApp.js"></script>
 		<script src="myNoteCtrl.js"></script>
+		<script src="myNoteDirectives.js"></script>
 	</body>
 </html>

@@ -2,7 +2,8 @@ myNoteApp.controller("myNoteCtrl", function($scope) {
 	$scope.note = "";
 	$scope.edit = false;
 	$scope.editID = -1;
-	$scope.left = function() { return 100 - $scope.note.length;};
+	$scope.maxLength = 100;
+	$scope.left = function() { return $scope.maxLength - $scope.note.length;};
 	$scope.clear = function() { $scope.note = "";};
 	if(localStorage.getItem('myNotes'))
 		$scope.prev = JSON.parse(localStorage.getItem('myNotes'));
